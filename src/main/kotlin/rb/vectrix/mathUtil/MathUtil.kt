@@ -2,6 +2,7 @@ package rb.vectrix.mathUtil
 
 import rb.vectrix.linear.Vec2
 import rb.vectrix.linear.Vec2d
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
 
@@ -118,6 +119,72 @@ object MathUtil {
         else -> when {
             c == null -> min(a, b)
             else -> minOf(a,b,c)
+        }
+    }
+    // endregion
+
+    // region maxOrNull
+    fun maxOrNull(a: Int?, b: Int?) = when {
+        a == null -> when {
+            b == null -> null
+            else -> b
+        }
+        b == null -> a
+        else -> max(a, b)
+    }
+    fun maxOrNull(a: Float?, b: Float?) = when {
+        a == null -> when {
+            b == null -> null
+            else -> b
+        }
+        b == null -> a
+        else -> max(a, b)
+    }
+
+    fun maxOrNull(a: Float?, b: Float?, c:Float?) = when {
+        a == null -> when {
+            b == null -> when {
+                c == null -> null
+                else -> c
+            }
+            c == null -> b
+            else -> max(b, c)
+        }
+        b == null -> when {
+            c == null -> a
+            else -> max(a, c)
+        }
+        else -> when {
+            c == null -> max(a, b)
+            else -> maxOf(a,b,c)
+        }
+    }
+
+    fun maxOrNull(a: Double?, b: Double?) = when {
+        a == null -> when {
+            b == null -> null
+            else -> b
+        }
+        b == null -> a
+        else -> max(a, b)
+    }
+
+    fun maxOrNull(a: Double?, b: Double?, c:Double?) = when {
+        a == null -> when {
+            b == null -> when {
+                c == null -> null
+                else -> c
+            }
+            c == null -> b
+            else -> max(b, c)
+        }
+        b == null -> when {
+            c == null -> a
+            else -> max(a, c)
+        }
+        else -> when {
+            c == null -> min(a, b)
+            else -> maxOf(a,b,c)
         }
     }
     // endregion
