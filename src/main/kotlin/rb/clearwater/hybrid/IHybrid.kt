@@ -1,6 +1,7 @@
 package rb.clearwater.hybrid
 
 import rb.animo.io.IAafLoader
+import rb.global.ILogger
 import rb.glow.gle.IGLEngine
 
 interface IHybrid

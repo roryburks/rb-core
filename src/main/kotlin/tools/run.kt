@@ -6,7 +6,7 @@ import tools.pushPull.RBDepFileParser
 
 fun main() {
     val rbcf = RBCoreFileParser.parse("C:\\Workspace\\RBCoreFile.txt")
-    val rbDepFile = rbcf.deps["Spirite"]!!
+    val rbDepFile = rbcf.deps["FJVM"]!!
 
     val rbDep = RBDepFileParser.parse(rbDepFile)
 
