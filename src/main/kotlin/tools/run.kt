@@ -25,7 +25,7 @@ fun pullFrom( domain: String) {
     val rbcf = RBCoreFileParser.parse("C:\\Workspace\\RBCoreFile.txt")
     val depFilePath = rbcf.deps[domain]!!
     val depFile = RBDepFileParser.parse(depFilePath)
-    RBCorePush.push(depFile.root, rbcf.root, depFile.sub)
+    RBCorePush.pull(depFile.root, rbcf.root, depFile.sub)
 }
 
 fun pushAllFromCore() {

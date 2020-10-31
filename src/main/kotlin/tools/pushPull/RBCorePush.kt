@@ -29,6 +29,32 @@ object RBCorePush {
             sub("rbJvm", subDomains.rbJvmDomains)
     }
 
+
+    // The difference between push and pull is that push will completely wipe the domain folders whereas push
+    // will only work on a subdomain level
+    fun pull(fromDir: String, toDir: String, subDomains: RBSubDomains) {
+        fun sub( sub: String, domains: List<String>){
+            val fromSub = File(fromDir + File.separator + sub)
+            if( !fromSub.isDirectory) throw Error("${fromSub.absolutePath} is not a directory")
+            val toSub = File(toDir + File.separator + sub)
+            if( !toSub.isDirectory) throw Error("${toSub.absolutePath} is not a directory")
+
+            domains.forEach {
+                val fromDoubleSub = File(fromSub.canonicalPath + File.separator + it)
+                val toDoubleSub = File(toSub.canonicalPath + File.separator + it)
+                toDoubleSub.deleteRecursively()
+                toDoubleSub.mkdir()
+                copyRec(fromDoubleSub, toDoubleSub)
+            }
+
+        }
+
+        if( subDomains.rbDomains.any())
+            sub("rb", subDomains.rbDomains)
+        if( subDomains.rbJvmDomains.any())
+            sub("rbJvm", subDomains.rbJvmDomains)
+    }
+
     private fun copyRec(from: File, to: File) {
         val toRoot = to.toPath()
         val fromRoot = from.toPath()
