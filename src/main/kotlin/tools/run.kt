@@ -4,11 +4,35 @@ import tools.pushPull.RBCoreFileParser
 import tools.pushPull.RBCorePush
 import tools.pushPull.RBDepFileParser
 
+val spirite = "Spirite"
+val fDom = "FJVM"
+val clearmap = "clearmap"
+
 fun main() {
+    pullFrom(clearmap)
+    //pushTo(clearmap)
+    //pushAllFromCore()
+}
+
+fun pushTo(domain: String) {
     val rbcf = RBCoreFileParser.parse("C:\\Workspace\\RBCoreFile.txt")
-    val rbDepFile = rbcf.deps["FJVM"]!!
+    val depFilePath = rbcf.deps[domain]!!
+    val depFile = RBDepFileParser.parse(depFilePath)
+    RBCorePush.push(rbcf.root, depFile.root, depFile.sub)
+}
 
-    val rbDep = RBDepFileParser.parse(rbDepFile)
+fun pullFrom( domain: String) {
+    val rbcf = RBCoreFileParser.parse("C:\\Workspace\\RBCoreFile.txt")
+    val depFilePath = rbcf.deps[domain]!!
+    val depFile = RBDepFileParser.parse(depFilePath)
+    RBCorePush.push(depFile.root, rbcf.root, depFile.sub)
+}
 
-    RBCorePush.push(rbcf.root, rbDep.root, rbDep.sub)
+fun pushAllFromCore() {
+    val rbcf = RBCoreFileParser.parse("C:\\Workspace\\RBCoreFile.txt")
+
+    rbcf.deps.forEach { (domain, depFilePath) ->
+        val depFile = RBDepFileParser.parse(depFilePath)
+        RBCorePush.push(rbcf.root, depFile.root, depFile.sub)
+    }
 }
