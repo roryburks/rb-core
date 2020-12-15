@@ -9,6 +9,7 @@ import rb.vectrix.linear.ImmutableTransformD
 import rb.vectrix.mathUtil.d
 import rb.vectrix.mathUtil.floor
 import rb.vectrix.shapes.Rect
+import rb.vectrix.shapes.RectI
 
 class AafStructure(
         val animations: List<AafAnimStructure>
@@ -23,10 +24,11 @@ class AafFrame(
         val chunks: List<AafChunk>,
         val hitbox: List<AafHitbox> = emptyList())
 class AafChunk(
-        val celRect: Rect,
+        val celRect: RectI,
         val offsetX: Int,
         val offsetY: Int,
-        val drawDepth: Int)
+        val drawDepth: Int,
+        val idc: Char = ' ')
 
 class AafHitbox(
         val typeId: Int,

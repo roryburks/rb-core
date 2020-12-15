@@ -7,9 +7,10 @@ import tools.pushPull.RBDepFileParser
 val spirite = "Spirite"
 val fDom = "FJVM"
 val clearmap = "clearmap"
+val clearpipe = "clearpipe"
 
 fun main() {
-    pullFrom(clearmap)
+    //pullFrom(fDom)
     //pushTo(clearmap)
     //pushAllFromCore()
 }

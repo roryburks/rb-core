@@ -61,10 +61,10 @@ fun <T> Bindable<T>.bindWeaklyTo(root: Bindable<T>) : IContract
 }
 
 private class DoubleWeakContract<T>(
-    contract1: IContract,
-    contract2: IContract,
-    trigger1: T,
-    trigger2: T) : IContract
+        contract1: IContract,
+        contract2: IContract,
+        trigger1: T,
+        trigger2: T) : IContract
 {
     var c1 : IContract? = contract1
     var c2: IContract? = contract2
