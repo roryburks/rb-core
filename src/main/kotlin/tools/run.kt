@@ -10,9 +10,9 @@ val clearmap = "clearmap"
 val clearpipe = "clearpipe"
 
 fun main() {
-    //pullFrom(fDom)
+    pullFrom(fDom)
     //pushTo(clearmap)
-    pushAllFromCore()
+    //pushAllFromCore()
 }
 
 fun pushTo(domain: String) {

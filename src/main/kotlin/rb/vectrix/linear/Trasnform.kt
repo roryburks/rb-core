@@ -1,6 +1,7 @@
 package rb.vectrix.linear
 
 import rb.vectrix.mathUtil.d
+import rb.vectrix.mathUtil.f
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -333,8 +334,9 @@ data class ImmutableTransformF(
                 s, c, 0f
             )
         }
+        fun From(transform: ITransform) = ImmutableTransformF(
+            transform.m00.f, transform.m01.f, transform.m02.f, transform.m10.f, transform.m11.f, transform.m12.f )
     }
-
 }
 
 

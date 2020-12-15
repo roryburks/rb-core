@@ -11,6 +11,7 @@ object RBCorePush {
             val fromSub = File(fromDir + File.separator + sub)
             if( !fromSub.isDirectory) throw Error("${fromSub.absolutePath} is not a directory")
             val toSub = File(toDir + File.separator + sub)
+            if( !toSub.exists()) toSub.mkdir()
             if( !toSub.isDirectory) throw Error("${toSub.absolutePath} is not a directory")
 
             toSub.deleteRecursively()
