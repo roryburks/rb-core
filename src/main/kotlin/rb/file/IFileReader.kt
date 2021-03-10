@@ -3,9 +3,11 @@ package rb.file
 import rb.vectrix.IMathLayer
 import rb.vectrix.VectrixMathLayer
 import rb.vectrix.mathUtil.i
+import java.io.ByteArrayOutputStream
 import kotlin.math.min
 
 interface IFileReader {
+    fun readShort() : Short
     fun readUnsignedShort() : Int
     fun readByte() : Byte
     fun readInt() : Int
@@ -18,11 +20,21 @@ interface IFileReader {
     var filePointer: Long
 }
 
+fun IFileReader.readUtf8(): String {
+    val bos = ByteArrayOutputStream()
+    var b = this.readByte()
+    while( b != 0x00.toByte()) {
+        bos.write(b.i)
+        b = this.readByte()
+    }
+
+    return bos.toString("UTF-8")
+}
+
 interface IBinaryReadStream {
     fun readBytes( size: Int) : ByteArray
     fun readInto( byteArray: ByteArray, offset: Int, length: Int)
     var filePointer : Long
-    val len: Int
 }
 
 class ByteArrayReadStream(
@@ -43,5 +55,5 @@ class ByteArrayReadStream(
     }
 
     override var filePointer: Long = 0
-    override val len: Int get() = data.size
+    val len: Int get() = data.size
 }
