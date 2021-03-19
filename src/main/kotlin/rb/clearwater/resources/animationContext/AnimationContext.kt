@@ -1,7 +1,7 @@
 package rb.clearwater.resources.animationContext
 
 import rb.animo.animation.IAnimation
-import rb.animo.animation.RenderProperties
+import rb.animo.animation.AnimationDrawSettings
 import rb.clearwater.zone.base.IZoneAccessBase
 import rb.vectrix.linear.ITransform
 
@@ -28,7 +28,7 @@ data class AnimationContext<T: IAnimatedActorState<T>>(
             }
         }
     }
-    override fun draw(properties: RenderProperties, depth: Int) = anim.draw(
+    override fun draw(properties: AnimationDrawSettings, depth: Int) = anim.draw(
             met = met,
             properties = if( flipped) properties.copy(trans = properties.trans * ITransform.Scale(-1.0, 1.0)) else properties,
             depth = depth)

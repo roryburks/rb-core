@@ -188,11 +188,11 @@ class Meta(
     }
 
     fun render(dc: DrawContract, gc: IGraphicsContext){
-        if( dc.renderProperties != null){
+        if( dc.drawSettings != null){
             gc.pushTransform()
-            gc.alpha = dc.renderProperties.alpha
-            gc.composite = dc.renderProperties.composite
-            gc.transform = gc.transform * dc.renderProperties.trans
+            gc.alpha = dc.drawSettings.alpha
+            gc.composite = dc.drawSettings.composite
+            gc.transform = gc.transform * dc.drawSettings.trans
             dc.drawRubrick(gc)
             gc.popTransform()
         }

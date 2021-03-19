@@ -2,7 +2,7 @@ package rb.clearwater.zone.particle
 
 import rb.animo.DrawContract
 import rb.animo.animation.IAnimation
-import rb.animo.animation.RenderProperties
+import rb.animo.animation.AnimationDrawSettings
 import rb.clearwater.resources.animationContext.SimpleAnimationContext
 import rb.clearwater.zone.base.IZoneAccessBase
 
@@ -35,7 +35,7 @@ abstract class FlashAnimationParticle( animation: IAnimation, fps: Double) : IPa
     }
 
     abstract fun _step(contract: IParticle.IParticleContract)
-    abstract val properties : RenderProperties
+    abstract val properties : AnimationDrawSettings
 
     override fun draw() = anim.anim.draw(anim.met,properties).asSequence()
 }
